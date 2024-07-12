@@ -29,7 +29,7 @@ pipeline {
                 sh '''
                     echo 'Test stage'
                     pwd
-                    file -b build/index.html
+                    file -f build/index.html
                     npm test
                 '''
             }
