@@ -30,6 +30,7 @@ pipeline {
                     echo 'Test stage'
                     pwd
                     file -b build/index.html
+                    npm test
                 '''
             }
         }
