@@ -12,7 +12,7 @@ pipeline {
                 sh '''
                     pwd
                     mkdir -p build
-                    echo "Test" >> build/$BUILD_FILE_NAME
+                    echo "Testing" >> build/$BUILD_FILE_NAME
                     echo "Jenkin" >> build/$BUILD_FILE_NAME
                     cat build/$BUILD_FILE_NAME
                 '''
