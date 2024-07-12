@@ -14,7 +14,6 @@ pipeline {
                 }
             }
             steps {
-                cleanWs()
                 sh '''
                     ls -la
                     node --version
@@ -27,9 +26,4 @@ pipeline {
         }
 
     }
-        post {
-            success {
-                archiveArtifacts artifacts: 'build/**'
-            }
-        }
 }
