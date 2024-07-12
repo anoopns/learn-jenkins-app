@@ -7,26 +7,25 @@ pipeline {
 
     stages {
         stage('Build') {
+            agent {
+                docker {
+                    image 'node:18-alpine'
+                    reuseNode true
+                }
+            }
             steps {
                 cleanWs()
                 sh '''
-                    pwd
-                    mkdir -p build
-                    echo "Testing" >> build/$BUILD_FILE_NAME
-                    echo "Jenkin" >> build/$BUILD_FILE_NAME
-                    cat build/$BUILD_FILE_NAME
+                    ls -la
+                    node --version
+                    npm --version
+                    npm ci
+                    npm run build
+                    ls -la
                 '''
             }
         }
-        stage('Test') {
-            steps {
-                sh '''
-                    test -f build/$BUILD_FILE_NAME
-                    grep "Test" build/$BUILD_FILE_NAME
-                    grep "Jenkin" build/$BUILD_FILE_NAME
-                '''
-            }
-        }
+
     }
         post {
             success {
